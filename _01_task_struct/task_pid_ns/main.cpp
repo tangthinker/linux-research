@@ -38,6 +38,15 @@ int main(int argc, char const *argv[])
 
     fclose(file);
 
+    char pid_namespace[100];
+    int len = readlink("/proc/self/ns/pid", pid_namespace, sizeof(pid_namespace) - 1);
+    if(len != -1) {
+        pid_namespace[len] = '\0';
+        printf("Current pid namespace is: %s\n", pid_namespace);
+    }
+
+
+
 
     
 
